@@ -120,7 +120,7 @@ class Booking {
 		$locations = Location::getAllByUser($user);
 		$items = [];
 		foreach ($locations as $location) {
-			$items = $items + self::getAllByLocation($location);
+			$items = array_merge($items, self::getAllByLocation($location));
 		}
 		return $items;
 	}
