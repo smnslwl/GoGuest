@@ -104,7 +104,7 @@ class SavedLocation {
 		return self::_execute_and_fetch_all($stmt);
 	}
 
-	public static function getByName($id)
+	public static function getByName($name)
 	{
 		$sql = "SELECT * FROM " . self::$table . " WHERE name = :name";
 		$stmt = DB::instance()->prepare($sql);

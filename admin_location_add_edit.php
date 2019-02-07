@@ -8,7 +8,7 @@ if (!Session::has('user')) {
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $form_name = Request::POST('form_name');
-    $validator = new Validator('POST', url('admin_dashboard'));
+    $validator = new Validator('POST', url('admin'));
     $validator->validate();
 } else {
     $form_name = Session::get('form_name', 'add_location');

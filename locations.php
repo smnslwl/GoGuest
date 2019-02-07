@@ -4,8 +4,7 @@ require_once('app_init.php');
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $destination = trim(Request::GET('destination'));
 	$PAGE_TITLE = "Locations near " . $destination;
-    $validator = new Validator('GET', url('home'));
-    $validator->add_value('destination', $destination);
+    $validator = new Validator('GET', url(''));
 
     if (empty($destination)) {
         $validator->add_error('destination', 'This is a required field.');
@@ -14,13 +13,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $validator->validate();
 }
 
-$saved_location = SavedLocation::getByName('$destination');
-$locations = Location::getAll();
+$saved_location = SavedLocation::getByName($destination);
+$all_locations = Location::getAll();
+$near_locations = [];
 if ($saved_location->id != 0) {
-	foreach ($locations as $location) {
+	foreach ($all_locations as $location) {
 		$lat_difference = abs($location->latitude - $saved_location->latitude);
 		$lng_difference = abs($location->longitude - $saved_location->longitude);
+		if ($lat_difference < 1 and $lng_difference < 1) {
+			$near_locations[] = $location;
+		}
 	}
+}
+
+if (empty($near_locations)) {
+	$locations = $all_locations;
+} else {
+	$locations = $near_locations;
 }
 
 $booking_form = new Form('booking_start', 'POST', url('booking'));
@@ -33,8 +42,13 @@ require_once('header.php');
 		<div class="row">
 			<h3><?= $PAGE_TITLE ?></h3>
 			<hr>
-			<?php if (count($locations) > 0): ?>
-			<p>Sorry, the search feature has not been implemented yet. However, here are some great locations you may wish to visit.</p>
+			<?php if (empty($near_locations)): ?>
+			<p>Sorry, we could not find any locations near your destination.</p>
+				<?php if (empty($locations)): ?>
+				<p>Sorry, we could not find any locations at all.</p>
+				<?php else: ?>
+				<p>However, here are some other locations that you may like.</p>
+				<?php endif ?>
 			<?php endif ?>
 		</div>
 		<div class="row">
@@ -44,15 +58,11 @@ require_once('header.php');
 				<table class="table table-bordered table-condensed">
 					<tr>
 						<th>Name</th>
-						<th>Latitude</th>
-						<th>Longitude</th>
 						<th>Actions</th>
 					</tr>
 					<?php foreach ($locations as $location): ?>
 					<tr>
 						<td><?= $location->name ?></td>
-						<td><?= $location->latitude ?></td>
-						<td><?= $location->longitude ?></td>
 						<td>
 							<form class="inline_form" action="<?= $booking_form->action() ?>" method="<?= $booking_form->method() ?>">
 								<?= $booking_form->get_meta_fields() ?>

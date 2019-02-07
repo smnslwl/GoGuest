@@ -63,4 +63,4 @@ if ($form_name === 'add_location') {
 
 $validator->finish();
 $location->save();
-redirect(url('admin_dashboard'));
+redirect(url('admin'));
