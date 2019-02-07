@@ -9,10 +9,15 @@ require_once('header.php');
             <div class="col-md-6 col-md-offset-3">
                 <h3><?= $PAGE_TITLE ?></h3>
                 <hr>
-                <?php
-                $stmt = DB::instance()->query('SELECT * from USERS');
-                var_dump($stmt);
-                ?>
+                <form action="" method="">
+					<div class="form-group">
+						<label for="destination">Where are you going?</label>
+						<input type="text" class="form-control" id="destination" name="destination" value="">
+
+					</div>
+
+					<button type="submit" class="btn btn-primary">Find me a place</button>
+				</form>
             </div>
         </div>
     </div>
