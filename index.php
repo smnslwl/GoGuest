@@ -23,5 +23,18 @@ require_once('header.php');
     </div>
 </section>
 
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <h3>Hosts</h3>
+                <hr>
+                <p>Are you a Host?</p>
+                <a href="<?= url('register') ?>"><button type="button" class="btn btn-primary">Register here</button></a>
+            </div>
+        </div>
+    </div>
+</section>
+
 <?php
 require_once('footer.php');
