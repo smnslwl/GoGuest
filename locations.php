@@ -20,7 +20,7 @@ if ($saved_location->id != 0) {
 	foreach ($all_locations as $location) {
 		$lat_difference = abs($location->latitude - $saved_location->latitude);
 		$lng_difference = abs($location->longitude - $saved_location->longitude);
-		if ($lat_difference < 1 and $lng_difference < 1) {
+		if ($lat_difference < 0.5 and $lng_difference < 0.5) {
 			$near_locations[] = $location;
 		}
 	}
@@ -86,7 +86,11 @@ require_once('header.php');
 
 <script src="js/leaflet.js"></script>
 <script type="text/javascript">
+<?php if ($saved_location->id != 0): ?>
+var mymap = L.map('map_canvas').setView([<?= $saved_location->latitude ?>, <?= $saved_location->longitude ?>], 8);
+<?php else: ?>
 var mymap = L.map('map_canvas').setView([27.7296302, 84.3584355], 8);
+<?php endif ?>
 
 L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
 	maxZoom: 18,
