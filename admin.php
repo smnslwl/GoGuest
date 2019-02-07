@@ -112,25 +112,27 @@ require_once('header.php');
 				<table class="table table-bordered table-condensed">
 					<tr>
 						<th>Name</th>
-						<th>Latitude</th>
-						<th>Longitude</th>
+						<th>Locations</th>
 						<th>Actions</th>
 					</tr>
 					<?php foreach ($locations as $location): ?>
 					<tr>
-						<td><?= $location->name ?></td>
-						<td><?= $location->latitude ?></td>
-						<td><?= $location->longitude ?></td>
+						<td>
+							<a href="<?= location_url($location->id) ?>"><?= $location->name ?></a>
+						</td>
+						<td>
+							Rs. <?= $location->price ?></a>
+						</td>
 						<td>
 							<form class="inline_form" action="<?= $edit_location_form->action() ?>" method="<?= $edit_location_form->method() ?>">
 								<?= $edit_location_form->get_meta_fields() ?>
 								<input type="hidden" name="id" value="<?= $location->id ?>">
-								<button type="submit" class="btn btn-warning">&#9986</button>
+								<button type="submit" class="btn btn-warning">&#9986; Edit</button>
 							</form>
 							<form class="inline_form" action="<?= $remove_location_form->action() ?>" method="<?= $remove_location_form->method() ?>">
 								<?= $remove_location_form->get_meta_fields() ?>
 								<input type="hidden" name="id" value="<?= $location->id ?>">
-								<button type="submit" class="btn btn-danger">&#10006</button>
+								<button type="submit" class="btn btn-danger">&#10006; Delete</button>
 							</form>
 						</td>
 					</tr>
@@ -163,8 +165,10 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=p
 	id: 'mapbox.streets'
 }).addTo(mymap);
 
+
+
 <?php foreach($locations as $location): ?>
-L.marker([<?= $location->latitude ?>, <?= $location->longitude ?>]).addTo(mymap).bindPopup("<?= $location->name ?>").openPopup();
+L.marker([<?= $location->latitude ?>, <?= $location->longitude ?>]).addTo(mymap).bindPopup("<a href='<?= location_url($location->id) ?>'><strong><?= $location->name ?></strong></a><br><br>Rs. <?= $location->price ?>").openPopup();
 <?php endforeach ?>
 </script>
 

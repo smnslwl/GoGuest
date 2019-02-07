@@ -1,5 +1,5 @@
 <?php
-$PAGE_TITLE = "Not Found";
+$PAGE_TITLE = "404 Not Found";
 require_once('header.php');
 ?>
 

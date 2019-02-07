@@ -20,4 +20,9 @@ function redirect($location)
     die();
 }
 
+function location_url($id)
+{
+    return url('location') . '?location=' . $id;
+}
+
 Session::start();

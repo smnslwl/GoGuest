@@ -53,9 +53,9 @@ class Location {
 	public function save()
 	{
 		if ($this->id == 0) {
-		$this->_insert();
+			$this->_insert();
 		} else {
-		$this->_update();
+			$this->_update();
 		}
 	}
 

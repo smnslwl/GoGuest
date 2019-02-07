@@ -15,11 +15,7 @@ require_once('header.php');
     <div class="container">
         <h3><?= $PAGE_TITLE ?></h3>
         <hr>
-        <br>
-        <br>
         <?= $location->description ?>
-        <br>
-        <br>
     </div>
 </section>
 

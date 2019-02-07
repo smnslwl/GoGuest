@@ -52,12 +52,16 @@ require_once('header.php');
 				<table class="table table-bordered table-condensed">
 					<tr>
 						<th>Name</th>
+						<th>Price</th>
 						<th>Actions</th>
 					</tr>
 					<?php foreach ($locations as $location): ?>
 					<tr>
 						<td>
-							<a href="<?= url('location') . '?location=' . $location->id ?>"><?= $location->name ?></a>
+							<a href="<?= location_url($location->id) ?>"><?= $location->name ?></a>
+						</td>
+						<td>
+							Rs. <?= $location->price ?></a>
 						</td>
 						<td>
 							<form class="inline_form" action="<?= $booking_form->action() ?>" method="<?= $booking_form->method() ?>">
@@ -97,7 +101,7 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=p
 }).addTo(mymap);
 
 <?php foreach($locations as $location): ?>
-L.marker([<?= $location->latitude ?>, <?= $location->longitude ?>]).addTo(mymap).bindPopup("<?= $location->name ?>").openPopup();
+L.marker([<?= $location->latitude ?>, <?= $location->longitude ?>]).addTo(mymap).bindPopup("<a href='<?= location_url($location->id) ?>'><strong><?= $location->name ?></strong></a><br><br>Rs. <?= $location->price ?>").openPopup();
 <?php endforeach ?>
 </script>
 

@@ -17,6 +17,7 @@ if ($form_name === 'add_location') {
 
 $location = new Location;
 $location->id = Request::POST('id');
+$location->user = Session::get('user');
 $location->name = Request::POST('name');
 $location->latitude = Request::POST('latitude');
 $location->longitude = Request::POST('longitude');
