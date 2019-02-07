@@ -44,6 +44,7 @@ require_once('header.php');
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6">
+				<?php if (!Session::has('user')): ?>
 				<h3>Become a host</h3>
 				<hr>
 				<p>
@@ -59,6 +60,16 @@ require_once('header.php');
 				<a href="<?= url('register') ?>">
 					<button type="button" class="btn btn-primary">Start earning money now!</button>
 				</a>
+				<?php else: ?>
+				<h3>Manage your account</h3>
+				<hr>
+				<p>
+					Manage all your locations and bookings in the admin area.
+				</p>
+				<a href="<?= url('admin') ?>">
+					<button type="button" class="btn btn-primary">Go to Dashboard</button>
+				</a>
+				<?php endif ?>
 			</div>
 			<div class="col-md-6">
 				<img src="images/house2.jpg" class="img-responsive img-rounded" alt="House in Nepal">

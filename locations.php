@@ -3,7 +3,12 @@ require_once('app_init.php');
 
 $destination = 'Kathmandu';
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-    $destination = trim(Request::GET('destination'));
+	$validator = new Validator('GET', url(''));
+	$destination = trim(Request::GET('destination'));
+	if (empty($destination)) {
+		$validator->add_error('destination', 'This field is required.');
+	}
+	$validator->validate();
 	$PAGE_TITLE = "Locations near " . $destination;
 }
 

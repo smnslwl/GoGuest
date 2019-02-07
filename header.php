@@ -35,7 +35,7 @@ require_once('app_init.php');
                     <ul class="nav navbar-nav navbar-right">
                         <?php if (Session::has('user')): ?>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?= Session::get('user')->username ?><span class="caret"></span></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?= Session::get('user')->username ?>&nbsp;<span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li><a href="<?= url('admin') ?>">Admin</a></li>
                                 <li role="separator" class="divider"></li>
