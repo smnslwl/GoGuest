@@ -21,3 +21,5 @@ if (empty($username)) {
 $validator->validate();
 
 Session::set('user', $user);
+
+redirect(url('admin'));

@@ -50,7 +50,9 @@ $form = new Form('register', 'POST', url('register_process'));
                         <?php endif; ?>
                     </div>
                     <br>
-                    <button type="submit" class="btn btn-default btn-primary btn-block"><?= $PAGE_TITLE ?></button>
+                    <button type="submit" class="btn btn-default btn-primary btn-block">Register</button>
+                    <br>
+                    <p><a href="<?= url('login') ?>">Already have an account</a></p>
                 </form>
             </div>
         </div>
