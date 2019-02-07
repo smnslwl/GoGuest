@@ -1,5 +1,8 @@
 <?php
 
+// Helper class for form validation.
+// If there are any errors, it redirects back to the form page with errors set in session.
+// On no errors, messages can be passed to some other page if required.
 class Validator {
     private $_form;
     private $_method;

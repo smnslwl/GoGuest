@@ -1,5 +1,8 @@
 <?php
 
+// Helper class for a form.
+// If the user submits the form and there are errors, it gets the errors for each field from session.
+// It also remembers previous values of fields.
 class Form {
     private $_name;
     private $_action;
