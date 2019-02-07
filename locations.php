@@ -1,16 +1,10 @@
 <?php
 require_once('app_init.php');
 
+$destination = 'Kathmandu';
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $destination = trim(Request::GET('destination'));
 	$PAGE_TITLE = "Locations near " . $destination;
-    $validator = new Validator('GET', url(''));
-
-    if (empty($destination)) {
-        $validator->add_error('destination', 'This is a required field.');
-    }
-
-    $validator->validate();
 }
 
 $saved_location = SavedLocation::getByName($destination);
@@ -62,7 +56,9 @@ require_once('header.php');
 					</tr>
 					<?php foreach ($locations as $location): ?>
 					<tr>
-						<td><?= $location->name ?></td>
+						<td>
+							<a href="<?= url('location') . '?location=' . $location->id ?>"><?= $location->name ?></a>
+						</td>
 						<td>
 							<form class="inline_form" action="<?= $booking_form->action() ?>" method="<?= $booking_form->method() ?>">
 								<?= $booking_form->get_meta_fields() ?>

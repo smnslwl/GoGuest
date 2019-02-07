@@ -2,7 +2,7 @@
 require_once('app_init.php');
 
 if (Session::has('user')) {
-	redirect(url('admin_dashboard'));
+	redirect(url('admin'));
 }
 
 $PAGE_TITLE = "Register";

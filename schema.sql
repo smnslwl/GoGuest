@@ -14,6 +14,8 @@ CREATE TABLE locations(
     name VARCHAR(255) NOT NULL,
     latitude DECIMAL(9, 6) NOT NULL,
     longitude DECIMAL(9, 6) NOT NULL,
+    price INTEGER NOT NULL,
+    description TEXT,
     FOREIGN KEY (user) REFERENCES users (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

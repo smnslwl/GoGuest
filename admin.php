@@ -15,7 +15,7 @@ $add_location_form = new Form('add_location', 'POST', url('admin_location_add_ed
 $edit_location_form = new Form('edit_location', 'POST', url('admin_location_add_edit'));
 $remove_location_form = new Form('remove_location', 'POST', url('admin_location_remove'));
 
-$PAGE_TITLE = "Dashboard";
+$PAGE_TITLE = "Admin";
 require_once('header.php');
 ?>
 

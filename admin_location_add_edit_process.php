@@ -20,13 +20,16 @@ $location->id = Request::POST('id');
 $location->name = Request::POST('name');
 $location->latitude = Request::POST('latitude');
 $location->longitude = Request::POST('longitude');
-$location->user = Session::get('user');
+$location->price = Request::POST('price');
+$location->description = Request::POST('description');
 
 $validator->add_value('id', $location->id);
 $validator->add_value('name', $location->name);
 $validator->add_value('longitude', $location->longitude);
 $validator->add_value('latitude', $location->latitude);
 $validator->add_value('user', $location->user);
+$validator->add_value('price', $location->price);
+$validator->add_value('description', $location->description);
 
 if (empty($location->name)) {
     $validator->add_error('name', 'This is a required field.');
@@ -50,6 +53,20 @@ if (empty($location->longitude)) {
     } else if ($location->longitude < 80 or $location->longitude > 89) {
         $validator->add_error('longitude', 'Must be between 80 and 89.');
     }
+}
+
+if (empty($location->price)) {
+    $validator->add_error('price', 'This is a required field.');
+} else {
+    if (!is_numeric($location->price)) {
+        $validator->add_error('price', 'Must be a number.');
+    } else if ($location->price < 0 or $location->price > 10000) {
+        $validator->add_error('price', 'Must be between 0 and 10000.');
+    }
+}
+
+if (empty($location->description)) {
+    $validator->add_error('description', 'This is a required field.');
 }
 
 $validator->validate();

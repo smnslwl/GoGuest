@@ -8,9 +8,9 @@ if (!Session::has('user')) {
 $form_name = Request::POST('form_name');
 
 if ($form_name === 'confirm_booking') {
-    $validator = new Validator('POST', url('admin_dashboard'));
+    $validator = new Validator('POST', url('admin'));
 } else if ($form_name === 'cancel_booking') {
-    $validator = new Validator('POST', url('admin_dashboard'));
+    $validator = new Validator('POST', url('admin'));
 } else {
     die('An error occured');
 }

@@ -86,6 +86,26 @@ require_once('header.php');
                         <?php endif; ?>
                     </div>
 
+                    <div class="form-group">
+                        <label for="price">Price</label>
+                        <input type="text" class="form-control" id="price" name="price" value="<?= $location->price ?>">
+                        <?php if ($form->has_errors('price')): ?>
+                            <?php foreach($form->errors('price') as $error): ?>
+                            <small class="text-danger"><?= $error ?></small><br>
+                            <?php endforeach ?>
+                        <?php endif; ?>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea class="form-control" rows="5" id="description" name="description" value="<?= $location->description ?>"></textarea>
+                        <?php if ($form->has_errors('description')): ?>
+                            <?php foreach($form->errors('description') as $error): ?>
+                            <small class="text-danger"><?= $error ?></small><br>
+                            <?php endforeach ?>
+                        <?php endif; ?>
+                    </div>
+
                     <br>
                     <button type="submit" class="btn btn-primary btn-block"><?= $PAGE_TITLE ?></button>
                 </form>
