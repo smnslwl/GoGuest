@@ -19,3 +19,5 @@ function redirect($location)
     header('Location: '. $location);
     die();
 }
+
+Session::start();

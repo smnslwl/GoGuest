@@ -26,7 +26,7 @@ class Validator {
 
         if ($this->_method == 'POST') {
             if (!Session::verify_csrf_token(Request::POST('csrf_token'))) {
-                redirect(url('home'));
+                redirect(url(''));
             }
             $this->_form = Request::POST('form_name');
         }
