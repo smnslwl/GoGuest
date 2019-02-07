@@ -39,4 +39,15 @@ CREATE TABLE savedlocations(
 INSERT INTO savedlocations (name, latitude, longitude) VALUES
     ('kathmandu', 27.70169, 85.3206),
     ('pokhara', 28.26689, 83.96851),
+    ('nepalgunj',28.05, 81.61667 ),
+    ('jhapa',26.647038, 87.890495),
+    ('birgunj',27.005915, 84.859085),
+    ('butwal',27.686386, 83.432426),
+    ('lumbini',27.467155, 83.274908),
+    ('mount everest',27.986065, 86.922623),
+    ('surkhet',28.60194, 81.63389),
+    ('dang',28.13099, 82.29726),
+    ('tikapur',28.5, 81.13333),
+    ('dhankuta',26.98333, 87.33333),
+    ('biratnagar',26.4831, 87.28337),
     ('janakpur', 26.71828, 85.90646);
