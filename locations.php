@@ -3,9 +3,7 @@ require_once('app_init.php');
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $destination = trim(Request::GET('destination'));
-    $PAGE_TITLE = "Locations near " . $destination;
-    $locations = Location::getAll();
-
+	$PAGE_TITLE = "Locations near " . $destination;
     $validator = new Validator('GET', url('home'));
     $validator->add_value('destination', $destination);
 
@@ -14,6 +12,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     }
 
     $validator->validate();
+}
+
+$saved_location = SavedLocation::getByName('$destination');
+$locations = Location::getAll();
+if ($saved_location->id != 0) {
+	foreach ($locations as $location) {
+		$lat_difference = abs($location->latitude - $saved_location->latitude);
+		$lng_difference = abs($location->longitude - $saved_location->longitude);
+	}
 }
 
 $booking_form = new Form('booking_start', 'POST', url('booking'));

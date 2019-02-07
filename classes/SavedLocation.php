@@ -104,12 +104,12 @@ class SavedLocation {
 		return self::_execute_and_fetch_all($stmt);
 	}
 
-	public static function getAllSimilarTo($name)
+	public static function getByName($id)
 	{
-		$sql = "SELECT * FROM " . self::$table . " WHERE name LIKE %:name%";
+		$sql = "SELECT * FROM " . self::$table . " WHERE name = :name";
 		$stmt = DB::instance()->prepare($sql);
-		$stmt->bindParam(':name', strtolower($name));
-		return self::_execute_and_fetch_all($stmt);
+		$stmt->bindParam(':name', $name);
+		return self::_execute_and_fetch($stmt);
 	}
 
 };
