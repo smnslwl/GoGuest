@@ -27,26 +27,23 @@ if (empty($booking->email)) {
     $validator->add_error('email', 'Please enter a valid email address.');
 }
 
+// TODO VALIDATE FROM AND TO DATES
+
 if (empty($booking->adults)) {
     $validator->add_error('adults', 'This is a required field.');
 } else {
     if (!is_numeric($booking->adults)) {
         $validator->add_error('adults', 'Must be a number.');
-    } else if ($booking->adults < 0 or $booking->price > 20) {
+    } else if ($booking->adults < 1 or $booking->adults > 20) {
         $validator->add_error('adults', 'Must have at least one and at most 20 adults.');
     }
 }
 
-if (empty($booking->children)) {
-    $validator->add_error('children', 'This is a required field.');
-} else {
-    if (!is_numeric($booking->children)) {
-        $validator->add_error('children', 'Must be a number.');
-    } else if ($booking->children > 20) {
-        $validator->add_error('price', 'Can have at most 20 children.');
-    }
+if (!is_numeric($booking->children)) {
+    $validator->add_error('children', 'Must be a number.');
+} else if ($booking->children < 0 or $booking->children > 20) {
+    $validator->add_error('children', 'Can bring at most 20 children.');
 }
-
 
 $validator->validate();
 $booking->save();

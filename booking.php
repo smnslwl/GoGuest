@@ -30,7 +30,7 @@ require_once('header.php');
 <section>
 	<div class="container">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-6 col-md-offset-3">
                 <h3><?= $PAGE_TITLE ?></h3>
 	        	<hr>
                 <form action="<?= $form->action() ?>" method="<?= $form->method() ?>">
