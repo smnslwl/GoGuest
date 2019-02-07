@@ -7,7 +7,7 @@ if ($location->id == 0) {
     redirect(url('404'));
 }
 
-$PAGE_TITLE = $location->description;
+$PAGE_TITLE = $location->name;
 require_once('header.php');
 ?>
 

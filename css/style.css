@@ -21,7 +21,7 @@ footer {
 
 section {
     margin: 0;
-    padding: 40px 0;
+    padding: 30px 0;
     background-color: lightsteelblue;
 }
 
@@ -38,8 +38,8 @@ header a:hover, footer a:hover {
 section#home_banner {
     background-color: #123456;
     color: orange;
-    min-height: 100vh;
-    padding-top: 30vh;
+    min-height: 95vh;
+    padding-top: 15vh;
 }
 
 .navbar {
@@ -54,4 +54,8 @@ section#home_banner {
 
 .inline_form {
     display: inline;
+}
+
+.img-responsive.img-center {
+  margin: 0 auto;
 }
