@@ -35,6 +35,11 @@ class Session {
         $_SESSION[$key] = $value;
     }
 
+    public static function remove($key)
+    {
+        unset($_SESSION[$key]);
+    }
+
     public static function get_csrf_token()
     {
         return $_SESSION['csrf_token'];
