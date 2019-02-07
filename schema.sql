@@ -26,3 +26,17 @@ CREATE TABLE bookings(
     status INT DEFAULT 0,
     FOREIGN KEY (location) REFERENCES locations (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS savedlocations;
+
+CREATE TABLE savedlocations(
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL,
+    latitude DECIMAL(9, 6) NOT NULL,
+    longitude DECIMAL(9, 6) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO savedlocations (name, latitude, longitude) VALUES
+    ('kathmandu', 27.70169, 85.3206),
+    ('pokhara', 28.26689, 83.96851),
+    ('janakpur', 26.71828, 85.90646);

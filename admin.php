@@ -124,12 +124,12 @@ require_once('header.php');
 						<td>
 							<form class="inline_form" action="<?= $edit_location_form->action() ?>" method="<?= $edit_location_form->method() ?>">
 								<?= $edit_location_form->get_meta_fields() ?>
-								<input type="hidden" name="location_id" value="<?= $location->id ?>">
+								<input type="hidden" name="id" value="<?= $location->id ?>">
 								<button type="submit" class="btn btn-warning">&#9986</button>
 							</form>
 							<form class="inline_form" action="<?= $remove_location_form->action() ?>" method="<?= $remove_location_form->method() ?>">
 								<?= $remove_location_form->get_meta_fields() ?>
-								<input type="hidden" name="location_id" value="<?= $location->id ?>">
+								<input type="hidden" name="id" value="<?= $location->id ?>">
 								<button type="submit" class="btn btn-danger">&#10006</button>
 							</form>
 						</td>
