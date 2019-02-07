@@ -1,6 +1,6 @@
 <?php
 
-require_once('app_common.php');
+require_once('app_init.php');
 
 if (!Session::has('user')) {
 	redirect(url('login'));

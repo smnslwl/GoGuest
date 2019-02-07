@@ -1,5 +1,5 @@
 <?php
-require_once('app_common.php');
+require_once('app_init.php');
 
 $remove_location_validator = new Validator('POST', url('admin_dashboard'));
 $remove_location_validator->validate();
