@@ -22,4 +22,4 @@ $validator->validate();
 
 Session::set('user', $user);
 
-redirect(url('admin'));
+redirect(url('admin_dashboard'));

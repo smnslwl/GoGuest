@@ -1,14 +1,14 @@
 <?php
 
-require_once('app_init.php');
+require_once('app_common.php');
 
 if (!Session::has('user')) {
 	redirect(url('login'));
 }
 
-if (Request::method() === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $form_name = Request::POST('form_name');
-    $validator = new Validator('POST', url('admin'));
+    $validator = new Validator('POST', url('admin_dashboard'));
     $validator->validate();
 } else {
     $form_name = Session::get('form_name', 'add_location');
@@ -27,7 +27,8 @@ if ($form_name === 'add_location') {
     die('An error occured.');
 }
 
-if ($form->has_errors_any()){
+if ($form->has_errors_any())
+{
     $location->id = $form->value('id');
     $location->name = $form->value('name');
     $location->latitude = $form->value('latitude');
@@ -92,6 +93,31 @@ require_once('header.php');
         </div>
 	</div>
 </section>
+
+<script src="js/leaflet.js"></script>
+<script type="text/javascript">
+var mymap = L.map('map_canvas').setView([27.7296302,84.3584355], 8);
+
+L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+    maxZoom: 18,
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+        '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+        'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    id: 'mapbox.streets'
+}).addTo(mymap);
+
+var latlng = L.latLng(<?= $location->latitude ?>, <?= $location->longitude ?>);
+var popup = L.popup();
+popup.setLatLng(latlng).setContent(latlng.toString()).openOn(mymap);
+
+function onMapClick(e) {
+    popup.setLatLng(e.latlng).setContent(e.latlng.toString()).openOn(mymap);
+    document.getElementById('latitude').value = e.latlng.lat;
+    document.getElementById('longitude').value = e.latlng.lng;
+}
+
+mymap.on('click', onMapClick);
+</script>
 
 <?php
 require_once('footer.php');

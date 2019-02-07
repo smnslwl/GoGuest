@@ -1,6 +1,5 @@
 <?php
 
-// Wrapper around $_GET and $_POST superglobals
 class Request {
 
     public static function method()

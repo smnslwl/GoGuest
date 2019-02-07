@@ -2,7 +2,7 @@
 require_once('app_init.php');
 
 if (Session::has('user')) {
-	redirect(url('admin'));
+	redirect(url('admin_dashboard'));
 }
 
 $PAGE_TITLE = "Login";

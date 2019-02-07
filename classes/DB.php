@@ -1,7 +1,7 @@
 <?php
+
 require_once('app_config.php');
 
-// Database connection singleton class
 class DB extends PDO {
 
 	protected function __construct()

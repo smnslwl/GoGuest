@@ -1,6 +1,5 @@
 <?php
 
-// Wrapper around the $_SESSION superglobal
 class Session {
 
     public static function start()
@@ -22,12 +21,12 @@ class Session {
 
     public static function has($key)
     {
-        return array_key_exists($key, $_SESSION) ? true : false;
+        return array_key_exists($key, $_SESSION);
     }
 
     public static function get($key, $default = '')
     {
-        return array_key_exists($key, $_SESSION) ? $_SESSION[$key] : $default;
+        return self::has($key) ? $_SESSION[$key] : $default;
     }
 
     public static function set($key, $value)
@@ -50,4 +49,4 @@ class Session {
         return $_SESSION['csrf_token'] === $token;
     }
 
-}
+};

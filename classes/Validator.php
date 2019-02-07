@@ -1,8 +1,5 @@
 <?php
 
-// Helper class for form validation.
-// If there are any errors, it redirects back to the form page with errors set in session.
-// On no errors, messages can be passed to some other page if required.
 class Validator {
     private $_form;
     private $_method;
@@ -29,7 +26,7 @@ class Validator {
 
         if ($this->_method == 'POST') {
             if (!Session::verify_csrf_token(Request::POST('csrf_token'))) {
-                redirect(url(''));
+                redirect(url('home'));
             }
             $this->_form = Request::POST('form_name');
         }

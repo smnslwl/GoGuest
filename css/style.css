@@ -38,7 +38,7 @@ header a:hover, footer a:hover {
 section#home_banner {
     background-color: #123456;
     color: orange;
-    min-height: 85vh;
+    min-height: 100vh;
     padding-top: 30vh;
 }
 

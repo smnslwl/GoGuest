@@ -1,14 +1,14 @@
-<footer>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <p>Developed by <strong>The Nepali Nerds</strong> for <strong>Yomari Code Camp 2019</strong>.</p>
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col col-md-6">
+                        <p class="text-left"><small>App developed by Samin Silwal and Bikash Gupta.</small></p>
+                    </div>
+                    <div class="col col-md-6">
+                        <p class="text-right"><small><a href="#">Back to top</a></small></p>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-6">
-                <p class="text-right"><a href="#">Back to top</a></p>
-            </div>
-        </div>
-    </div>
-</footer>
-</body>
+        </footer>
+    </body>
 </html>

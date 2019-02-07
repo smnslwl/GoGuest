@@ -52,12 +52,8 @@ require_once('header.php');
 
 <section class="main">
     <div class="container">
-        <div class="row">
-            <div class="col-md-6 col-md-offset-3">
-                <h3><?= $PAGE_TITLE ?></h3>
-                <p>Please <a href="<?= url('login') ?>">log in</a> to continue.</p>
-            </div>
-        </div>
+        <h3><?= $PAGE_TITLE ?></h3>
+        <p>Please <a href="<?= url('login') ?>">log in</a> to continue.</p>
     </div>
 </section>
 

@@ -1,8 +1,8 @@
 <?php
-require_once('app_init.php');
+require_once('app_common.php');
 
 if (!Session::has('user')) {
-    redirect(url('login'));
+	redirect(url('login'));
 }
 
 $form_name = Request::POST('form_name');
@@ -63,4 +63,4 @@ if ($form_name === 'add_location') {
 
 $validator->finish();
 $location->save();
-redirect(url('admin'));
+redirect(url('admin_dashboard'));
