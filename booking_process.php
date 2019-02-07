@@ -29,7 +29,7 @@ require_once('header.php');
 <section class="main">
     <div class="container">
         <h3><?= $PAGE_TITLE ?></h3>
-        <p>You will soon receive a confirmation email from the owners of <?= $booking->location->name ?>. Thank you for using <? $APP_TITLE ?> for your travel needs.</p>
+        <p>You will soon receive a confirmation email from the owners of <?= $booking->location->name ?>. Thank you for using <?= $APP_TITLE ?> for your travel needs.</p>
         <p>Please be aware that in the case of unforseen circumstances, your booking might get canceled. You will receive an cancellation message if that happens.</p>
     </div>
 </section>
