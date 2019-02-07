@@ -6,7 +6,7 @@ if (!Session::has('user')) {
 	redirect(url('login'));
 }
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if (Request::method() === 'POST') {
     $form_name = Request::POST('form_name');
     $validator = new Validator('POST', url('admin'));
     $validator->validate();
@@ -27,8 +27,7 @@ if ($form_name === 'add_location') {
     die('An error occured.');
 }
 
-if ($form->has_errors_any())
-{
+if ($form->has_errors_any()){
     $location->id = $form->value('id');
     $location->name = $form->value('name');
     $location->latitude = $form->value('latitude');

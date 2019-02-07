@@ -20,7 +20,24 @@ require_once('header.php');
         <div class="row">
             <h3><?= $PAGE_TITLE ?></h3>
             <hr>
-            <p>This is a super secret page that can only be viewed by logged in users.</p>
+            <p>Manage your locations here.</p>
+			<?php if ($add_location_form->has_messages()): ?>
+				<?php foreach($add_location_form->messages() as $message): ?>
+				<div class="alert alert-success alert-dismissible fade in"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><?= $message ?></div>
+				<?php endforeach ?>
+			<?php endif; ?>
+
+			<?php if ($edit_location_form->has_messages()): ?>
+				<?php foreach($edit_location_form->messages() as $message): ?>
+				<div class="alert alert-warning alert-dismissible fade in"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><?= $message ?></div>
+				<?php endforeach ?>
+			<?php endif; ?>
+
+			<?php if ($remove_location_form->has_messages()): ?>
+				<?php foreach($remove_location_form->messages() as $message): ?>
+				<div class="alert alert-danger alert-dismissible fade in"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><?= $message ?></div>
+				<?php endforeach ?>
+			<?php endif; ?>
         </div>
     </div>
 </section>
@@ -46,12 +63,12 @@ require_once('header.php');
 						<td>
 							<form class="inline_form" action="<?= $edit_location_form->action() ?>" method="<?= $edit_location_form->method() ?>">
 								<?= $edit_location_form->get_meta_fields() ?>
-								<input type="hidden" name="location_id" value="<?= $location->id ?>">
+								<input type="hidden" name="id" value="<?= $location->id ?>">
 								<button type="submit" class="btn btn-warning">&#9986</button>
 						    </form>
 							<form class="inline_form" action="<?= $remove_location_form->action() ?>" method="<?= $remove_location_form->method() ?>">
 								<?= $remove_location_form->get_meta_fields() ?>
-								<input type="hidden" name="location_id" value="<?= $location->id ?>">
+								<input type="hidden" name="id" value="<?= $location->id ?>">
 								<button type="submit" class="btn btn-danger">&#10006</button>
 							</form>
 						</td>
