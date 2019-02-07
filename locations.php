@@ -58,6 +58,7 @@ require_once('header.php');
 					<tr>
 						<th>Name</th>
 						<th>Price</th>
+						<th>Host</th>
 						<th>Actions</th>
 					</tr>
 					<?php foreach ($locations as $location): ?>
@@ -69,10 +70,13 @@ require_once('header.php');
 							Rs. <?= $location->price ?></a>
 						</td>
 						<td>
+							<?= $location->user->username ?>
+						</td>
+						<td>
 							<form class="inline_form" action="<?= $booking_form->action() ?>" method="<?= $booking_form->method() ?>">
 								<?= $booking_form->get_meta_fields() ?>
 								<input type="hidden" name="location" value="<?= $location->id ?>">
-								<button type="submit" class="btn btn-warning">Book</button>
+								<button type="submit" class="btn btn-primary">Book</button>
 							</form>
 						</td>
 					</tr>
@@ -106,7 +110,7 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=p
 }).addTo(mymap);
 
 <?php foreach($locations as $location): ?>
-L.marker([<?= $location->latitude ?>, <?= $location->longitude ?>]).addTo(mymap).bindPopup("<a href='<?= location_url($location->id) ?>'><strong><?= $location->name ?></strong></a><br><br>Rs. <?= $location->price ?>").openPopup();
+L.marker([<?= $location->latitude ?>, <?= $location->longitude ?>]).addTo(mymap).bindPopup("<a href='<?= location_url($location->id) ?>'><strong><?= $location->name ?></strong></a><br><em><?= $location->user->username ?></em><br><strong>Rs. <?= $location->price ?></strong>").openPopup();
 <?php endforeach ?>
 </script>
 

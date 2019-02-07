@@ -25,6 +25,10 @@ CREATE TABLE bookings(
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     location INT NOT NULL,
     email VARCHAR(255) NOT NULL,
+    date_from DATE NOT NULL,
+    date_to DATE NOT NULL,
+    adults INT DEFAULT 0,
+    children INT DEFAULT 0,
     status INT DEFAULT 0,
     FOREIGN KEY (location) REFERENCES locations (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

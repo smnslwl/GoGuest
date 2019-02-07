@@ -2,8 +2,12 @@
 require_once('app_init.php');
 
 $booking = new Booking();
-$booking->email = trim(Request::POST('email'));
+$booking->email = htmlspecialchars(trim(Request::POST('email')));
 $booking->location = Location::getById(Request::POST('location'));
+$booking->from = htmlspecialchars(Request::POST('date_from'));
+$booking->to = htmlspecialchars(Request::POST('date_to'));
+$booking->adults = htmlspecialchars(Request::POST('adults'));
+$booking->children = htmlspecialchars(Request::POST('children'));
 $booking->status = Request::POST('status');
 $booking->id = Request::POST('id');
 
@@ -11,6 +15,10 @@ $validator = new Validator('POST', url('booking'));
 $validator->add_value('id', $booking->id);
 $validator->add_value('location', $booking->location->id);
 $validator->add_value('email', $booking->email);
+$validator->add_value('from', $booking->from);
+$validator->add_value('to', $booking->to);
+$validator->add_value('adults', $booking->adults);
+$validator->add_value('children', $booking->children);
 $validator->add_value('status', $booking->status);
 
 if (empty($booking->email)) {
@@ -18,6 +26,27 @@ if (empty($booking->email)) {
 } else if (!filter_var($booking->email, FILTER_VALIDATE_EMAIL)) {
     $validator->add_error('email', 'Please enter a valid email address.');
 }
+
+if (empty($booking->adults)) {
+    $validator->add_error('adults', 'This is a required field.');
+} else {
+    if (!is_numeric($booking->adults)) {
+        $validator->add_error('adults', 'Must be a number.');
+    } else if ($booking->adults < 0 or $booking->price > 20) {
+        $validator->add_error('adults', 'Must have at least one and at most 20 adults.');
+    }
+}
+
+if (empty($booking->children)) {
+    $validator->add_error('children', 'This is a required field.');
+} else {
+    if (!is_numeric($booking->children)) {
+        $validator->add_error('children', 'Must be a number.');
+    } else if ($booking->children > 20) {
+        $validator->add_error('price', 'Can have at most 20 children.');
+    }
+}
+
 
 $validator->validate();
 $booking->save();

@@ -9,6 +9,10 @@ class Booking {
 	public $id;
 	public $location;
 	public $email;
+	public $from;
+	public $to;
+	public $adults;
+	public $children;
 	public $status;
 
 	public function __construct()
@@ -16,15 +20,23 @@ class Booking {
 		$this->id = 0;
 		$this->location = new Location();
 		$this->email = "";
+		$this->from = "";
+		$this->to = "";
+		$this->adults = 1;
+		$this->children = 0;
 		$this->status = self::UNKNOWN;
 	}
 
 	protected function _insert()
 	{
-		$sql = "INSERT INTO " . self::$table . " (location, email, status) VALUES (:location, :email, :status)";
+		$sql = "INSERT INTO " . self::$table . " (location, email, date_from, date_to, adults, children, status) VALUES (:location, :email, :from, :to, :adults, :children, :status)";
 		$stmt = DB::instance()->prepare($sql);
 		$stmt->bindParam(':location', $this->location->id);
 		$stmt->bindParam(':email', $this->email);
+		$stmt->bindParam(':from', $this->from);
+		$stmt->bindParam(':to', $this->to);
+		$stmt->bindParam(':adults', $this->adults);
+		$stmt->bindParam(':children', $this->children);
 		$stmt->bindParam(':status', $this->status);
 		$stmt->execute();
 		$this->id = DB::instance()->lastInsertID();
@@ -32,10 +44,14 @@ class Booking {
 
 	protected function _update()
 	{
-		$sql = "UPDATE " . self::$table . " SET location = :location, email = :email, status = :status WHERE id = :id";
+		$sql = "UPDATE " . self::$table . " SET location = :location, email = :email, date_from = :from, date_to = :to, adults = :adults, children = :children, status = :status WHERE id = :id";
 		$stmt = DB::instance()->prepare($sql);
 		$stmt->bindParam(':location', $this->location->id);
 		$stmt->bindParam(':email', $this->email);
+		$stmt->bindParam(':from', $this->from);
+		$stmt->bindParam(':to', $this->to);
+		$stmt->bindParam(':adults', $this->adults);
+		$stmt->bindParam(':children', $this->children);
 		$stmt->bindParam(':status', $this->status);
 		$stmt->bindParam(':id', $this->id);
 		$stmt->execute();
@@ -65,6 +81,10 @@ class Booking {
 		$this->id = $row['id'];
 		$this->location = Location::getById($row['location']);
 		$this->email = $row['email'];
+		$this->from = $row['date_from'];
+		$this->to = $row['date_to'];
+		$this->adults = $row['adults'];
+		$this->children = $row['children'];
 		$this->status = $row['status'];
 	}
 

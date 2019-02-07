@@ -18,11 +18,11 @@ if ($form_name === 'add_location') {
 $location = new Location;
 $location->id = Request::POST('id');
 $location->user = Session::get('user');
-$location->name = Request::POST('name');
-$location->latitude = Request::POST('latitude');
-$location->longitude = Request::POST('longitude');
-$location->price = Request::POST('price');
-$location->description = Request::POST('description');
+$location->name = htmlspecialchars(Request::POST('name'));
+$location->latitude = htmlspecialchars(Request::POST('latitude'));
+$location->longitude = htmlspecialchars(Request::POST('longitude'));
+$location->price = htmlspecialchars(Request::POST('price'));
+$location->description = htmlspecialchars(Request::POST('description'));
 
 $validator->add_value('id', $location->id);
 $validator->add_value('name', $location->name);

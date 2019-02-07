@@ -11,23 +11,21 @@ require_once('header.php');
         <p><img src="images/landscape.jpg" class="img-responsive img-rounded center-block" alt="Nepal landscape"><p>
         <p><strong>Future technical enhancements</strong></p>
         <ul>
+            <li>Use more location attributes (capacity/noisiness</li>
+            <li>Sort/filter locations by price and other factors</li>
             <li>Verified hosts show up higher in listings and are given higher priority.</li>
-            <li>Better guest interaction and feedback methods - ratings, booking history etc.</li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
+            <li>Include WSYWIG editor to edit location description</li>
+            <li>Better guest interaction and feedback methods - ratings, booking history and so on.</li>
+            <li>Guests who have visited a location can leave comments on the location page.</li>
         </ul>
         <p><strong>Planned business model</strong></p>
         <ul>
             <li>GoGuest will charge the hosts a small convenience fee for every completed transaction.</li>
             <li>Targeted advertisements to be shown to the guests based on their destination searches.</li>
+            <li>Appropriate safety measures to ensure guest safety (providing helplines etc.)</li>
             <li>Insurance for the guests against any misfortunes/accidents.</li>
             <li>Insurance for the hosts as well.</li>
             <li>Random onsite inspections of host locations to ensure quality environment.</li>
-            <li></li>
-            <li></li>
         </ul>
     </div>
 </section>

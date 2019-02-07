@@ -1,7 +1,7 @@
 <?php
 require_once('app_init.php');
 
-$username = trim(Request::POST('username'));
+$username = htmlspecialchars(trim(Request::POST('username')));
 $password = Request::POST('password');
 $confirm_password = Request::POST('confirm_password');
 $tos = Request::POST('tos');

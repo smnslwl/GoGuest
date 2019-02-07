@@ -67,7 +67,11 @@ require_once('header.php');
 				<table class="table table-bordered table-condensed">
 					<tr>
 						<th>Location</th>
-						<th>Email</th>
+						<th>Guest Email</th>
+						<th>Check in</th>
+						<th>Check out</th>
+						<th>Adults</th>
+						<th>Children</th>
 						<th>Status</th>
 						<th>Actions</th>
 					</tr>
@@ -75,6 +79,10 @@ require_once('header.php');
 					<tr>
 						<td><?= $booking->location->name ?></td>
 						<td><?= $booking->email ?></td>
+						<td><?= $booking->from ?></td>
+						<td><?= $booking->to ?></td>
+						<td><?= $booking->adults ?></td>
+						<td><?= $booking->children ?></td>
 						<td><?= $booking->status_text() ?></td>
 						<td>
 							<?php if ($booking->status != BOOKING::CONFIRMED): ?>
@@ -112,7 +120,7 @@ require_once('header.php');
 				<table class="table table-bordered table-condensed">
 					<tr>
 						<th>Name</th>
-						<th>Locations</th>
+						<th>Price</th>
 						<th>Actions</th>
 					</tr>
 					<?php foreach ($locations as $location): ?>
