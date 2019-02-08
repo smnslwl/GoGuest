@@ -49,7 +49,7 @@ require_once('header.php');
                     </div>
 
                     <div class="form-group">
-                        <label for="date_from">From</label>
+                        <label for="date_from">Check in</label>
                         <div class='input-group date' id='datetimepicker_from'>
                             <input type='text' class="form-control" id="date_from" name="date_from">
                             <span class="input-group-addon">
@@ -64,7 +64,7 @@ require_once('header.php');
                     </div>
 
                     <div class="form-group">
-                        <label for="date_from">To</label>
+                        <label for="date_from">Check out</label>
                         <div class='input-group date' id='datetimepicker_to'>
                             <input type='text' class="form-control" id="date_to" name="date_to">
                             <span class="input-group-addon">

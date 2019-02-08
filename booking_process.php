@@ -27,7 +27,19 @@ if (empty($booking->email)) {
     $validator->add_error('email', 'Please enter a valid email address.');
 }
 
-// TODO VALIDATE FROM AND TO DATES
+$d1 = new DateTime($booking->from);
+if (!($d1 && $d1->format('Y/m/d') == $booking->from)) {
+    $validator->add_error('date_from', 'Invalid date' . var_dump($d1));
+}
+
+$d2 = new DateTime($booking->to);
+if (!($d2 && $d2->format('Y/m/d') == $booking->to)) {
+    $validator->add_error('date_to', 'Invalid date' . var_dump($d2));
+}
+
+if ($d2 < $d1) {
+    $validator->add_error('date_to', 'Cannot be earlier than check in date.');
+}
 
 if (empty($booking->adults)) {
     $validator->add_error('adults', 'This is a required field.');
